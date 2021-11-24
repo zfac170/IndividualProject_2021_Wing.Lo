@@ -1,8 +1,10 @@
 import java.util.*;
 import java.io.*;
 
-public class SequenceDataMain {
-    public static Map<String, String> SequenceDataReader(String fileName) throws IOException{
+
+public class SequenceDataUtil {
+
+    public static Map<String, String> parseSequenceData(String fileName) throws IOException{
         BufferedReader br = new BufferedReader(new FileReader(fileName));
 
         String line;
@@ -19,6 +21,23 @@ public class SequenceDataMain {
         }
         return seqMap;
     }
+
+    public static SequenceFileFormat setSeqFormat(String fileName) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            String line;
+            if((line = br.readLine()) != null){
+                line = line.trim();
+                if (line.startsWith(">")){
+                    return SequenceFileFormat.FASTA;
+                }
+            }
+        } catch (IOException ex) {
+            return SequenceFileFormat.UNKNOWN;
+        }
+        return SequenceFileFormat.UNKNOWN;
+    }
+    /*
     public static void main(String[] args){
         try {
             System.out.print(SequenceDataReader("/Users/winkielo/Documents/GitHub/IndividualProject_2021_Wing.Lo/zfac170-clustering/xxx.fasta"));
@@ -26,4 +45,5 @@ public class SequenceDataMain {
             e.printStackTrace();
         }
     }
+    */
 }
