@@ -15,8 +15,8 @@ import java.util.*;
  */
 public class SequenceDataUtilTest {
     @Test
-    public void testFilemat() {
-        SequenceFileFormat format = SequenceDataUtil.setSeqFormat("./zfac170-clustering/xxx.fasta");
+    public void testFileFormat() {
+        SequenceFileFormat format = SequenceDataUtil.setSeqFormat("xxx.fasta");
         assertEquals(format, SequenceFileFormat.FASTA);
     }
 
@@ -28,7 +28,7 @@ public class SequenceDataUtilTest {
         seqMap.put("SEQUENCE_3", "GTACTAATC");
         seqMap.put("SEQUENCE_4", "TTACATGGA");
 
-        Map<String, String> parsedMap = SequenceDataUtil.parseSequenceData("./zfac170-clustering/xxx.fasta");
+        Map<String, String> parsedMap = SequenceDataUtil.parseSequenceData("xxx.fasta");
         assertEquals(seqMap, parsedMap);
     }
 }

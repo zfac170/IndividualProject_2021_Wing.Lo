@@ -1,3 +1,6 @@
+/**
+ * Sequence Data Format
+ */
 public class SequenceData {
     private String seq_Id;
     private String seq_String;

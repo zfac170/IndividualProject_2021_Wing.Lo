@@ -1,6 +1,9 @@
 import java.util.*;
 import java.io.*;
 
+/**
+ * Utility function for sequence data
+ */
 
 public class SequenceDataUtil {
 
@@ -37,13 +40,4 @@ public class SequenceDataUtil {
         }
         return SequenceFileFormat.UNKNOWN;
     }
-    /*
-    public static void main(String[] args){
-        try {
-            System.out.print(SequenceDataReader("/Users/winkielo/Documents/GitHub/IndividualProject_2021_Wing.Lo/zfac170-clustering/xxx.fasta"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    */
 }
