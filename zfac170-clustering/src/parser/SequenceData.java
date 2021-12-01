@@ -1,3 +1,5 @@
+package parser;
+
 /**
  * Sequence Data Format
  */
@@ -13,6 +15,10 @@ public class SequenceData {
         this(seq.seq_Id, seq.seq_String, seq.seq_Desc);
     }
 
+    public SequenceData(String seq_Id, String seq_String){
+        this.seq_Id = seq_Id;
+        this.seq_String = seq_String;
+    }
     public SequenceData(String seq_Id, String seq_String, String seq_Desc){
         this.seq_Id = seq_Id;
         this.seq_String = seq_String;

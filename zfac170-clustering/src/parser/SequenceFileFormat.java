@@ -1,3 +1,5 @@
+package parser;
+
 /**
  * Sequence File Format
  */

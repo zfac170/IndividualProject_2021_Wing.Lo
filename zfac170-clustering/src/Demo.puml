@@ -1,0 +1,43 @@
+@startuml
+class ScoringMatrix{
+    -matrix ： double[][]
+    -nucleotides : Map<Character, Integer>
+
+    +ScoringMatrix(map : Map<Character, Integer>, matrix)
+    +score(a: char, b: char): double
+}
+
+class MyScoringMatrix extends ScoringMatrix{
+    -matrix : double[][]
+    -map : Map<Character, Integer>
+
+    +MyScoringMatrix()
+}
+
+class SequenceData{
+    -seq_Id : String
+    -seq_String : String
+    -seq_Desc : String
+    -SequenceData()
+
+    +SequenceData(SequenceData seq)
+    +SequenceData(seq_Id, seq_String, seq_Desc)
+}
+
+class SequenceDataUtil{
+    +parseSequenceData(fileName : String) : Map<String, String> throws IOException
+    +SequenceFileFormat setSeqFormat(fileName : String)
+}
+
+enum SequenceFileFormat{
+    FASTA
+    FASTAQ
+    CSV
+    GENBANK
+    EMBL
+    UNKNOWN
+}
+
+SequenceFileFormat <.. SequenceDataUtil
+@enduml
+

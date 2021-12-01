@@ -1,3 +1,5 @@
+package parser;
+
 import java.util.*;
 import java.io.*;
 
@@ -20,6 +22,7 @@ public class SequenceDataUtil {
                 seq_id = line.substring(1);
             } else{
                 seqMap.put(seq_id, line);
+                new SequenceData(seq_id, line);
             }
         }
         return seqMap;
