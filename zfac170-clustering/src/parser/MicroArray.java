@@ -81,10 +81,4 @@ public class MicroArray {
     public int numOfSamples() {
         return this.numOfSamples;
     }
-
-
-    public static void main(String[] args) throws CsvException, IOException {
-        MicroArray array = new MicroArray("hm_cot.csv");
-        System.out.println(array.numOfSamples());
-    }
 }
