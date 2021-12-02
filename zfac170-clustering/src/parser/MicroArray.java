@@ -1,14 +1,20 @@
 package parser;
 
-import java.io.*;
-import  java.util.*;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
+
+/**
+ * @author winkielo
+ * parse MicroArray data in csv format
+ */
+
 public class MicroArray {
     int numOfGenes = 0;
     int numOfSamples = 0;
-
     Map<String, Integer> sampleNames = new HashMap<>();
     Map<String, Integer> geneNames = new HashMap<>();
     Map<String, double[]> data;
@@ -34,15 +40,8 @@ public class MicroArray {
         numOfSamples = myEntries.get(0).length - 1;
         Map<String, ArrayList<double[]>> temp = new HashMap<>();
         data = new HashMap<>();
-//        for (int i = 0; i < numOfGenes; ++i) {
-//            for (int j = 0; j < numOfSamples; ++j) {
-//                data[i][j] = Double.parseDouble(myEntries.get(i + 1)[j + 1]);
-//                System.out.println(data[i][j]);
-//            }
-//        }
+
         for (int j = 0; j < numOfSamples; ++j) {
-//            if (sampleNames.containsKey(myEntries.get(0)[j + 1]))
-//                throw KeyAlreadyExistsException;
             sampleNames.put(myEntries.get(0)[j + 1], j);
         }
 
@@ -75,7 +74,7 @@ public class MicroArray {
         }
     }
 
-    int numOfGenes() {
+    public int numOfGenes() {
         return this.numOfGenes;
     }
 
@@ -86,6 +85,6 @@ public class MicroArray {
 
     public static void main(String[] args) throws CsvException, IOException {
         MicroArray array = new MicroArray("hm_cot.csv");
-        System.out.println(array.numOfGenes());
+        System.out.println(array.numOfSamples());
     }
 }
