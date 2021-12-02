@@ -78,7 +78,7 @@ public class MicroArray {
         return this.numOfGenes;
     }
 
-    int numOfSamples() {
+    public int numOfSamples() {
         return this.numOfSamples;
     }
 

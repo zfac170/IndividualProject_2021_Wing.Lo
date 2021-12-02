@@ -11,6 +11,7 @@ public class MicroArrayTest {
     public void readMicroArrayTest() throws IOException, CsvException {
         MicroArray array = new MicroArray("hm_cot.csv");
         assertEquals(64, array.numOfGenes());
+        assertEquals(6, array.numOfSamples());
     }
 
 }
