@@ -13,9 +13,6 @@ import java.util.*;
 import java.util.List;
 
 public class MicroarrayDataMain {
-    public static void main(String[] args) {
-
-    }
 
     public static BinaryTree runExample() throws IOException {
 
