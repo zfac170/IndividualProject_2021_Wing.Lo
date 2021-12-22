@@ -6,9 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/zfac170-clustering/Test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/zfac170-clustering/src" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="15" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="opencsv-5.5.2" level="project" />
     <orderEntry type="module-library" exported="" scope="TEST">
       <library name="JUnit4">
         <CLASSES>
@@ -19,5 +18,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" exported="" name="opencsv-5.5.2" level="project" />
+    <orderEntry type="library" exported="" name="commons-lang3-3.12.0" level="project" />
   </component>
 </module>

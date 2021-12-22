@@ -39,5 +39,33 @@ enum SequenceFileFormat{
 }
 
 SequenceFileFormat <.. SequenceDataUtil
+
+abstract class Linkage{
+    #distance : Distance
+    +Linkage() : #distance
+    +void setDistance()
+    +abstract clusterDistance(List<Integer> cluster1, List<Integer> cluster2): double
+}
+
+class SingleLinkage extends Linkage{
+    +SingleLinkage()
+    +clusterDistance(List<Integer> cluster1, List<Integer> cluster2): double
+}
+
+class GroupAvgLinkage extends Linkage{
+    +GroupAvgLinkage()
+    +clusterDistance(List<Integer> cluster1, List<Integer> cluster2): double
+}
+
+class CompleteLinkage extends Linkage{
+    +CompleteLinkage()
+    +clusterDistance(List<Integer> cluster1, List<Integer> cluster2): double
+}
+
+abstract class HierarchicalClustering implements Linkage{
+    #Linkage : Linkage
+    +HierarchicalClustering(linkage : Linkage)
+    +abstract BinaryTree fit(distance : Distance, clusters : List<List<Integer>> )
+}
 @enduml
 
