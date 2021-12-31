@@ -1,6 +1,6 @@
 package algorithm.clustering.distance;
 
-public class MatrixDistance extends Distance {
+public class MatrixDistance extends DistanceMethod {
     private double[][] matrix;
 
     public MatrixDistance(double[][] matrix) {

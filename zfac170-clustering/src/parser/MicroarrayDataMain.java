@@ -3,7 +3,7 @@ package parser;
 import algorithm.clustering.AgglomerativeClustering;
 import algorithm.clustering.HierarchicalClustering;
 import algorithm.clustering.linkage.SingleLinkage;
-import algorithm.clustering.distance.Distance;
+import algorithm.clustering.distance.DistanceMethod;
 import algorithm.clustering.distance.EuclideanDistance;
 import algorithm.clustering.distance.MatrixDistance;
 import algorithm.clustering.BinaryTree;
@@ -25,7 +25,7 @@ public class MicroarrayDataMain {
 
         // generate random vectors
 
-        Distance euclidean = new EuclideanDistance(vectors);
+        DistanceMethod euclidean = new EuclideanDistance(vectors);
 
         double[][] distance = new double[n][n];
         // find pairwise distance ...

@@ -12,7 +12,7 @@ public class SingleLinkage extends Linkage {
         double shortest = Double.MAX_VALUE;
         for (int u : cluster1) {
             for (int v: cluster2) {
-                shortest = Math.min(shortest, this.distance.distance(u, v));
+                shortest = Math.min(shortest, this.distanceMethod.distance(u, v));
             }
         }
         return shortest;

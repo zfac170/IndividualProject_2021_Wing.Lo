@@ -12,7 +12,7 @@ public class GroupAvgLinkage extends Linkage{
         double total = 0;
         for (int u : cluster1) {
             for (int v: cluster2) {
-                total += this.distance.distance(u,v);
+                total += this.distanceMethod.distance(u,v);
             }
         }
         return total / ( cluster1.size() * cluster2.size() );

@@ -17,6 +17,11 @@ public class MicroArray {
     int numOfSamples = 0;
     Map<String, Integer> sampleNames = new HashMap<>();
     Map<String, Integer> geneNames = new HashMap<>();
+
+    public Map<String, double[]> getData() {
+        return data;
+    }
+
     Map<String, double[]> data;
 
     double[] mean(ArrayList<double[]> list) {

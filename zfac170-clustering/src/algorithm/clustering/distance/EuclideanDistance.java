@@ -1,6 +1,6 @@
 package algorithm.clustering.distance;
 
-public class EuclideanDistance extends Distance {
+public class EuclideanDistance extends DistanceMethod {
     private double[][] vectors;
 
     public EuclideanDistance() {

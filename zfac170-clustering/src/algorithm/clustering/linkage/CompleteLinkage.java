@@ -12,7 +12,7 @@ public class CompleteLinkage extends Linkage{
         double longest = Double.MIN_VALUE;
         for (int u : cluster1) {
             for (int v: cluster2) {
-                longest = Math.max(longest, this.distance.distance(u,v));
+                longest = Math.max(longest, this.distanceMethod.distance(u,v));
            }
         }
         return longest;
