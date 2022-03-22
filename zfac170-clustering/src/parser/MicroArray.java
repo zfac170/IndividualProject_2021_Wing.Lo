@@ -13,8 +13,8 @@ import com.opencsv.exceptions.CsvException;
  */
 
 public class MicroArray {
-    int numOfGenes = 0;
-    int numOfSamples = 0;
+    int numOfGenes;
+    int numOfSamples;
     Map<String, Integer> sampleNames = new HashMap<>();
     Map<String, Integer> geneNames = new HashMap<>();
 
@@ -29,9 +29,9 @@ public class MicroArray {
         int m = list.size();
         double[] result = new double[n];
 
-        for (int i = 0; i < list.size(); ++i) {
+        for (double[] doubles : list) {
             for (int j = 0; j < n; ++j) {
-                result[j] += list.get(i)[j] / m;
+                result[j] += doubles[j] / m;
             }
         }
 
@@ -77,6 +77,11 @@ public class MicroArray {
                 data.put(geneName, array.get(0));
             }
         }
+    }
+
+    public double[][] toArray() {
+        Map<String, double[]> data = getData();
+        return data.values().toArray(new double[0][0]);
     }
 
     public int numOfGenes() {
