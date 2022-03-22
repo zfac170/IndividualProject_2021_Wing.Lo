@@ -51,7 +51,7 @@ public class KMeansTest {
         }
 
         List<Double> x = NumpyUtils.arange(2, 9, 1);
-        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("C:\\Users\\Wind\\Anaconda3\\python.exe"));
+        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("/Users/winkielo/opt/anaconda3/bin/python"));
 
         plt.plot().add(x, inertia);
         plt.xlabel("k");
@@ -71,7 +71,7 @@ public class KMeansTest {
         KMeans kmeans = new KMeans(k, 100, new EuclideanDistance(), 5, "kmeans++");
         KMeans.KMeansResult result = kmeans.fit(data2D);
 
-        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("C:\\Users\\Wind\\Anaconda3\\python.exe"));
+        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("/Users/winkielo/opt/anaconda3/bin/python"));
 
         for (int i = 0; i < k; ++i) {
             List<Double> x = new ArrayList<>();
