@@ -1,6 +1,7 @@
 package algorithm.clustering.linkage;
 
 import algorithm.clustering.distance.DistanceMethod;
+import algorithm.clustering.distance.PairwiseDistance;
 
 import java.util.List;
 /*
@@ -9,13 +10,13 @@ Single
 Group Average
  */
 public abstract class Linkage{
-    protected DistanceMethod distanceMethod;
+    protected PairwiseDistance distanceMethod;
 
     public Linkage()  {
         this.distanceMethod = null;
     }
 
-    public void setDistance(DistanceMethod distanceMethod) {
+    public void setDistance(PairwiseDistance distanceMethod) {
         this.distanceMethod = distanceMethod;
     }
 

@@ -1,6 +1,6 @@
 package algorithm.clustering;
 
-import algorithm.clustering.distance.DistanceMethod;
+import algorithm.clustering.distance.PairwiseDistance;
 import algorithm.clustering.linkage.Linkage;
 
 import java.util.List;
@@ -12,5 +12,5 @@ public abstract class HierarchicalClustering {
         this.linkage = linkage;
     }
 
-    public abstract BinaryTree fit(DistanceMethod distanceMethod, List<List<Integer>> clusters);
+    public abstract BinaryTree fit(PairwiseDistance distanceMethod);
 }

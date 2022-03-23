@@ -1,6 +1,6 @@
 package algorithm.clustering;
 
-import algorithm.clustering.distance.DistanceMethod;
+import algorithm.clustering.distance.PairwiseDistance;
 import algorithm.clustering.linkage.Linkage;
 
 import java.util.ArrayList;
@@ -13,7 +13,15 @@ public class AgglomerativeClustering extends HierarchicalClustering {
     }
 
     @Override
-    public BinaryTree fit(DistanceMethod distanceMethod, List<List<Integer>> clusters) {
+    public BinaryTree fit(PairwiseDistance distanceMethod) {
+
+        List<List<Integer>> clusters = new ArrayList<>();
+        int n = distanceMethod.size();
+        for (int i = 0; i < n; ++i) {
+            clusters.add(new ArrayList<>());
+            clusters.get(i).add(i);
+        }
+
         this.linkage.setDistance(distanceMethod);
         List<Node> nodes = new ArrayList<>();
         // {{1}. {2}, ....}

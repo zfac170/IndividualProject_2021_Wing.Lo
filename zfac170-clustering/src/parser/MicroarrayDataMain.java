@@ -2,6 +2,7 @@ package parser;
 
 import algorithm.clustering.AgglomerativeClustering;
 import algorithm.clustering.HierarchicalClustering;
+import algorithm.clustering.distance.PairwiseDistance;
 import algorithm.clustering.linkage.SingleLinkage;
 import algorithm.clustering.distance.DistanceMethod;
 import algorithm.clustering.distance.EuclideanDistance;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class MicroarrayDataMain {
 
-    public static BinaryTree runExample() throws IOException {
+    public static BinaryTree runExample() {
 
         // input microarray data
 
@@ -25,7 +26,7 @@ public class MicroarrayDataMain {
 
         // generate random vectors
 
-        DistanceMethod euclidean = new EuclideanDistance(vectors);
+        PairwiseDistance euclidean = new EuclideanDistance(vectors);
 
         double[][] distance = new double[n][n];
         // find pairwise distance ...
@@ -44,14 +45,9 @@ public class MicroarrayDataMain {
             }
         }
         System.out.println(Arrays.deepToString(distance).replace("],", "],\n"));
-        List<List<Integer>> clusters = new ArrayList<>();
-        for (int i = 0; i < n; ++i) {
-            clusters.add(new ArrayList<>());
-            clusters.get(i).add(i);
-        }
 
         MatrixDistance matrixDistance = new MatrixDistance(distance);
         HierarchicalClustering clustering = new AgglomerativeClustering(new SingleLinkage());
-        return clustering.fit(matrixDistance, clusters);
+        return clustering.fit(matrixDistance);
     }
 }
