@@ -31,9 +31,8 @@ public class KMeansTest {
     public void KMeansFitTest() throws IOException, CsvException {
         KMeans kmeans = new KMeans(3, 100, new EuclideanDistance(), 111, "kmeans++");
         MicroArray array = new MicroArray("hm_cot.csv");
-        Map<String, double[]> data = array.getData();
-        double[][] data_array = data.values().toArray(new double[0][0]);
-        kmeans.fit(data_array);
+        System.out.print(array);
+        kmeans.fit(array.toArray());
     }
 
 
@@ -51,13 +50,12 @@ public class KMeansTest {
         }
 
         List<Double> x = NumpyUtils.arange(2, 9, 1);
-        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("/Users/winkielo/opt/anaconda3/bin/python"));
+        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("C:\\Users\\Wind\\Anaconda3\\python.exe"));
 
         plt.plot().add(x, inertia);
         plt.xlabel("k");
         plt.ylabel("inertia");
         plt.title("Search k using Elbow method");
-        plt.legend();
         plt.show();
     }
 
@@ -71,7 +69,7 @@ public class KMeansTest {
         KMeans kmeans = new KMeans(k, 100, new EuclideanDistance(), 5, "kmeans++");
         KMeans.KMeansResult result = kmeans.fit(data2D);
 
-        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("/Users/winkielo/opt/anaconda3/bin/python"));
+        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("C:\\Users\\Wind\\Anaconda3\\python.exe"));
 
         for (int i = 0; i < k; ++i) {
             List<Double> x = new ArrayList<>();

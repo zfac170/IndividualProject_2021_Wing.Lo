@@ -1,6 +1,6 @@
 package algorithm.clustering.distance;
 
-public class EuclideanDistance extends DistanceMethod {
+public class EuclideanDistance extends PairwiseDistance implements DistanceMethod {
     private double[][] vectors;
 
     public EuclideanDistance() {
@@ -11,14 +11,13 @@ public class EuclideanDistance extends DistanceMethod {
     }
 
     @Override
+    public int size() {
+        return vectors.length;
+    }
+
+    @Override
     public double distance(int i, int j) {
-        double[] v1 = vectors[i];
-        double[] v2 = vectors[j];
-        double sum = 0;
-        for (int d = 0; d < v1.length; ++d) {
-            sum += Math.pow(v1[d] - v2[d], 2);
-        }
-        return Math.sqrt(sum);
+        return distance(vectors[i], vectors[j]);
     }
 
     @Override

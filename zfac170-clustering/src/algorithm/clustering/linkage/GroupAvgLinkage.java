@@ -1,6 +1,6 @@
 package algorithm.clustering.linkage;
 
-import java.util.List;
+import java.util.Collection;
 
 public class GroupAvgLinkage extends Linkage{
     public GroupAvgLinkage(){
@@ -8,7 +8,7 @@ public class GroupAvgLinkage extends Linkage{
     }
 
     @Override
-    public double clusterDistance(List<Integer> cluster1, List<Integer> cluster2){
+    public double clusterDistance(Collection<Integer> cluster1, Collection<Integer> cluster2){
         double total = 0;
         for (int u : cluster1) {
             for (int v: cluster2) {

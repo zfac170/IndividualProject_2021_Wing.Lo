@@ -1,6 +1,6 @@
 package algorithm.clustering;
 
-import algorithm.clustering.distance.DistanceMethod;
+import algorithm.clustering.distance.PairwiseDistance;
 import algorithm.clustering.linkage.Linkage;
 
 import java.util.List;
@@ -12,5 +12,7 @@ public abstract class HierarchicalClustering {
         this.linkage = linkage;
     }
 
-    public abstract BinaryTree fit(DistanceMethod distanceMethod, List<List<Integer>> clusters);
+    // return dendrogram encoding
+    // see parameter Z in https://docs.scipy.org/doc/scipy/reference/generated/scipy.cluster.hierarchy.dendrogram.html#scipy.cluster.hierarchy.dendrogram
+    public abstract List<List<Double>> fit(PairwiseDistance distanceMethod);
 }
