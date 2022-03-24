@@ -6,6 +6,9 @@ import algorithm.clustering.AgglomerativeClustering;
 import algorithm.clustering.HierarchicalClustering;
 import algorithm.clustering.distance.MatrixDistance;
 import algorithm.clustering.linkage.SingleLinkage;
+import com.github.sh0nk.matplotlib4j.Plot;
+import com.github.sh0nk.matplotlib4j.PythonConfig;
+import com.github.sh0nk.matplotlib4j.PythonExecutionException;
 import org.junit.Test;
 import parser.SequenceData;
 import parser.SequenceDataUtil;
@@ -21,7 +24,7 @@ import java.util.*;
  *
  * To test SequenceDataMain reading.
  */
-public class SequenceDataUtilTest {
+public class SequenceDataTest {
     @Test
     public void testFileFormat() {
         SequenceFileFormat format = SequenceDataUtil.inferSeqFormat("xxx.fasta");
@@ -45,7 +48,7 @@ public class SequenceDataUtilTest {
      *
      */
     @Test
-    public void testSequenceData() throws IOException {
+    public void testSequenceData() throws IOException, PythonExecutionException {
         SequenceData sequenceData = new SequenceData("xxx.fasta");
         int n = sequenceData.size();
         String[] sequences = sequenceData.toArray();
@@ -83,7 +86,15 @@ public class SequenceDataUtilTest {
 
         MatrixDistance matrixDistance = new MatrixDistance(distance);
         HierarchicalClustering clustering = new AgglomerativeClustering(new SingleLinkage());
-        clustering.fit(matrixDistance);
-        // return clustering.fit(matrixDistance, clusters);
+
+        List<List<Double>> Z = clustering.fit(matrixDistance);
+
+        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("C:\\Users\\Wind\\Anaconda3\\python.exe"));
+
+        plt.dendrogram().add(Z).labels(sequenceData.getNames()).leafRotation(90);
+        plt.xlabel("gene");
+        plt.ylabel("dist");
+        plt.title("Dendrogram");
+        plt.show();
     }
 }

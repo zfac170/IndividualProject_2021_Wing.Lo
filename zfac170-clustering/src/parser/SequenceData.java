@@ -1,6 +1,8 @@
 package parser;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,7 +25,7 @@ public class SequenceData {
         return sequenceMap.values().toArray(new String[0]);
     }
 
-    public String[] getNames() {
-        return sequenceMap.keySet().toArray(new String[0]);
+    public List<String> getNames() {
+        return new ArrayList<>(sequenceMap.keySet());
     }
 }
