@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 public class MicroArrayTest {
     @Test
-    public void readMicroArrayTest() throws IOException, CsvException, PythonExecutionException {
+    public void MicroArrayDendrogramTest() throws IOException, CsvException, PythonExecutionException {
         MicroArray array = new MicroArray("hm_cot.csv");
         assertEquals(64, array.numOfGenes());
         assertEquals(6, array.numOfSamples());
