@@ -2,6 +2,7 @@ package parser;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.Inet4Address;
 import java.util.*;
 
 import com.opencsv.CSVReader;
@@ -79,6 +80,11 @@ public class MicroArray {
         }
     }
 
+    public List<String> getGeneNames() {
+        Map<String, double[]> data = getData();
+        return new ArrayList<>(data.keySet());
+    }
+
     public double[][] toArray() {
         Map<String, double[]> data = getData();
         return data.values().toArray(new double[0][0]);
@@ -90,5 +96,10 @@ public class MicroArray {
 
     public int numOfSamples() {
         return this.numOfSamples;
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.deepToString(toArray()).replace("],", "],\n");
     }
 }

@@ -1,3 +1,11 @@
+import algorithm.alignment.AlignmentAlgo;
+import algorithm.alignment.BLOSUM;
+import algorithm.alignment.NeedlemanWunschAlgo;
+import algorithm.alignment.ScoringMatrix;
+import algorithm.clustering.AgglomerativeClustering;
+import algorithm.clustering.HierarchicalClustering;
+import algorithm.clustering.distance.MatrixDistance;
+import algorithm.clustering.linkage.SingleLinkage;
 import org.junit.Test;
 import parser.SequenceData;
 import parser.SequenceDataUtil;
@@ -16,7 +24,7 @@ import java.util.*;
 public class SequenceDataUtilTest {
     @Test
     public void testFileFormat() {
-        SequenceFileFormat format = SequenceDataUtil.setSeqFormat("xxx.fasta");
+        SequenceFileFormat format = SequenceDataUtil.inferSeqFormat("xxx.fasta");
         assertEquals(format, SequenceFileFormat.FASTA);
     }
 
@@ -34,14 +42,48 @@ public class SequenceDataUtilTest {
 
     /**
      * To check SequenceData class
-     * @throws IOException
+     *
      */
     @Test
     public void testSequenceData() throws IOException {
-        SequenceData testSeq = new SequenceData("SEQUENCE_1", "GTAATCTAAC");
-        Map<String, String> testMap = SequenceDataUtil.parseSequenceData("xxx.fasta");
-        assertEquals(testSeq.getSeq_String(), testMap.get(testMap.keySet().toArray()[0]));
-        assertEquals(testSeq.getSeq_Id(),testMap.keySet().iterator().next());
-        assertEquals(null, testSeq.getSeq_Desc());
+        SequenceData sequenceData = new SequenceData("xxx.fasta");
+        int n = sequenceData.size();
+        String[] sequences = sequenceData.toArray();
+
+        ScoringMatrix matrix = new BLOSUM();
+        double penalty = -5;
+        AlignmentAlgo algo = new NeedlemanWunschAlgo(matrix, penalty);
+        double[][] distance = new double[n][n];
+        // find pairwise distance ...
+        for (int i = 0; i < n; ++i) {
+            for (int j = 0; j < n; ++j) {
+
+                if (i == j) {
+                    distance[i][j] = 0;
+                }
+                else if (j > i) {
+                    // option 1 : distance = 1 - ( 1 / similarity) <= similarity = 1 / distance + 1
+                    distance[i][j] =  100 * (1 - (1 / algo.align(sequences[i], sequences[j]).getSimilarity()));
+
+                    // option 2 : Euclidean algorithm.clustering.distance.Distance
+                    /* if (sequences[i].length = sequences[j].length)*/
+
+                    // option 3 : Correlation algorithm.clustering.distance.Distance
+                    // option 4 : Manhattan distance
+
+                    // - similarity = distance => larger similarity shorter distance
+                    //distance[i][j] = -algo.align(sequences[i], sequences[j]).getSimilarity();
+                }
+                else { // i > j
+                    distance[i][j] = distance[j][i];
+                }
+            }
+        }
+        System.out.println(Arrays.deepToString(distance).replace("],", "],\n"));
+
+        MatrixDistance matrixDistance = new MatrixDistance(distance);
+        HierarchicalClustering clustering = new AgglomerativeClustering(new SingleLinkage());
+        clustering.fit(matrixDistance);
+        // return clustering.fit(matrixDistance, clusters);
     }
 }

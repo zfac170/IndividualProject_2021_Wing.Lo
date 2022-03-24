@@ -1,6 +1,6 @@
 package algorithm.clustering.linkage;
 
-import java.util.List;
+import java.util.Collection;
 
 public class SingleLinkage extends Linkage {
     public SingleLinkage(){
@@ -8,7 +8,7 @@ public class SingleLinkage extends Linkage {
     }
 
     @Override
-    public double clusterDistance(List<Integer> cluster1, List<Integer> cluster2) {
+    public double clusterDistance(Collection<Integer> cluster1, Collection<Integer> cluster2) {
         double shortest = Double.MAX_VALUE;
         for (int u : cluster1) {
             for (int v: cluster2) {

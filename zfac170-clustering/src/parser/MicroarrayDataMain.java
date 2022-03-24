@@ -4,18 +4,14 @@ import algorithm.clustering.AgglomerativeClustering;
 import algorithm.clustering.HierarchicalClustering;
 import algorithm.clustering.distance.PairwiseDistance;
 import algorithm.clustering.linkage.SingleLinkage;
-import algorithm.clustering.distance.DistanceMethod;
 import algorithm.clustering.distance.EuclideanDistance;
 import algorithm.clustering.distance.MatrixDistance;
-import algorithm.clustering.BinaryTree;
 
-import java.io.*;
 import java.util.*;
-import java.util.List;
 
 public class MicroarrayDataMain {
 
-    public static BinaryTree runExample() {
+    public static void runExample() {
 
         // input microarray data
 
@@ -48,6 +44,5 @@ public class MicroarrayDataMain {
 
         MatrixDistance matrixDistance = new MatrixDistance(distance);
         HierarchicalClustering clustering = new AgglomerativeClustering(new SingleLinkage());
-        return clustering.fit(matrixDistance);
     }
 }
