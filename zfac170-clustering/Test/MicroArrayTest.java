@@ -3,7 +3,6 @@ import algorithm.clustering.HierarchicalClustering;
 import algorithm.clustering.distance.EuclideanDistance;
 import algorithm.clustering.distance.PairwiseDistance;
 import algorithm.clustering.linkage.SingleLinkage;
-import com.github.sh0nk.matplotlib4j.NumpyUtils;
 import com.github.sh0nk.matplotlib4j.Plot;
 import com.github.sh0nk.matplotlib4j.PythonConfig;
 import com.github.sh0nk.matplotlib4j.PythonExecutionException;
@@ -29,7 +28,7 @@ public class MicroArrayTest {
         HierarchicalClustering clustering = new AgglomerativeClustering(new SingleLinkage());
         List<List<Double>> Z = clustering.fit(distance);
 
-        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("C:\\Users\\Wind\\Anaconda3\\python.exe"));
+        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("/Users/winkielo/opt/anaconda3/bin/python"));
 
         plt.dendrogram().add(Z).labels(array.getGeneNames()).leafRotation(90);
         plt.xlabel("gene");

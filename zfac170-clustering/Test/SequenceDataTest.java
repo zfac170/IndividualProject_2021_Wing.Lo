@@ -89,7 +89,7 @@ public class SequenceDataTest {
 
         List<List<Double>> Z = clustering.fit(matrixDistance);
 
-        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("C:\\Users\\Wind\\Anaconda3\\python.exe"));
+        Plot plt = Plot.create(PythonConfig.pythonBinPathConfig("/Users/winkielo/opt/anaconda3/bin/python"));
 
         plt.dendrogram().add(Z).labels(sequenceData.getNames()).leafRotation(90);
         plt.xlabel("gene");
